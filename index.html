@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Is It Worth Finishing? | Game Backlog Decision Tool</title>
+    <meta name="description" content="Should you finish that game or move on? A rational decision tool for gamers with limited time and growing backlogs. No opinions, just logic.">
+    <meta name="keywords" content="game backlog, finish game, abandon game, gaming decision, backlog management, gaming time">
+    <meta name="author" content="worthit.geeknite.com">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://worthit.geeknite.com/">
+    <meta property="og:title" content="Is It Worth Finishing? | Game Backlog Decision Tool">
+    <meta property="og:description" content="A rational decision tool for gamers. Should you finish, pause, or abandon that game?">
+    <meta property="og:image" content="https://worthit.geeknite.com/og-image.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Is It Worth Finishing?">
+    <meta name="twitter:description" content="A rational decision tool for gamers with growing backlogs.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://worthit.geeknite.com/">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container" id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+                <h1>Is It Worth Finishing?</h1>
+            </div>
+            <p class="tagline">A rational tool for irrational backlogs</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-grid">
+                    <!-- Hours Played -->
+                    <div class="input-group">
+                        <label for="hoursPlayed">
+                            <span class="label-icon">⏱️</span>
+                            Hours Already Played
+                        </label>
+                        <div class="number-input-wrapper">
+                            <input type="number" id="hoursPlayed" min="0" max="9999" step="0.5" placeholder="0" required>
+                            <span class="input-suffix">hrs</span>
+                        </div>
+                    </div>
+
+                    <!-- Hours Remaining -->
+                    <div class="input-group">
+                        <label for="hoursRemaining">
+                            <span class="label-icon">⏳</span>
+                            Estimated Hours Remaining
+                        </label>
+                        <div class="number-input-wrapper">
+                            <input type="number" id="hoursRemaining" min="0" max="9999" step="0.5" placeholder="0" required>
+                            <span class="input-suffix">hrs</span>
+                        </div>
+                    </div>
+
+                    <!-- Enjoyment Level -->
+                    <div class="input-group slider-group">
+                        <label for="enjoyment">
+                            <span class="label-icon">😊</span>
+                            Current Enjoyment Level
+                            <span class="slider-value" id="enjoymentValue">5</span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="enjoyment" min="1" max="10" value="5" class="slider">
+                            <div class="slider-labels">
+                                <span>Meh</span>
+                                <span>Amazing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backlog Pressure -->
+                    <div class="input-group slider-group">
+                        <label for="backlog">
+                            <span class="label-icon">📚</span>
+                            Backlog Pressure
+                            <span class="slider-value" id="backlogValue">5</span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="backlog" min="1" max="10" value="5" class="slider">
+                            <div class="slider-labels">
+                                <span>Empty</span>
+                                <span>Infinite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completionist Mode -->
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="completionist">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">
+                            <span class="label-icon">🏆</span>
+                            Completionist Mode
+                            <span class="checkbox-hint">I need to see the credits roll</span>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Calculate Button -->
+                <button type="button" class="calculate-btn" id="calculateBtn">
+                    <span class="btn-text">Analyze My Situation</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </section>
+
+            <!-- Result Section (Hidden by default) -->
+            <section class="result-section hidden" id="resultSection">
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">
+                        <span class="result-icon" id="resultIcon">🎯</span>
+                        <h2 class="result-title" id="resultTitle">Verdict</h2>
+                    </div>
+                    
+                    <div class="recommendation" id="recommendation">
+                        <!-- Filled dynamically -->
+                    </div>
+                    
+                    <p class="result-explanation" id="resultExplanation">
+                        <!-- Filled dynamically -->
+                    </p>
+
+                    <!-- Score Breakdown -->
+                    <div class="score-breakdown" id="scoreBreakdown">
+                        <h3>Score Breakdown</h3>
+                        <div class="score-items" id="scoreItems">
+                            <!-- Filled dynamically -->
+                        </div>
+                        <div class="final-score">
+                            <span>Final Score:</span>
+                            <span class="score-number" id="finalScore">0</span>
+                            <span class="score-max">/ 100</span>
+                        </div>
+                    </div>
+
+                    <!-- Reset Button -->
+                    <button type="button" class="reset-btn" id="resetBtn">
+                        Try Another Game
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Ad Placeholder -->
+        <aside class="ad-container" id="adContainer">
+            <div class="ad-placeholder">
+                <span class="ad-label">Advertisement</span>
+                <!-- Ad code goes here -->
+            </div>
+        </aside>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <span class="heart">♥</span> for gamers with too many games</p>
+            <p class="footer-note">No tracking • No accounts • Just logic</p>
+            <p class="copyright">© 2026 worthit.geeknite.com</p>
+        </footer>
+    </div>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Is It Worth Finishing?",
+        "url": "https://worthit.geeknite.com",
+        "description": "A rational decision tool for gamers to decide whether to finish, pause, or abandon a game.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>
