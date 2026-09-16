@@ -1,6 +1,13 @@
 User-agent: *
 Allow: /
 
+# El grup * declara la intencio per a tot el que no te grup propi aqui sota.
+# search=yes indexa i enllaca; ai-input=yes deixa fer servir la pagina en temps
+# de resposta (citacio, RAG); ai-train=no la treu del corpus d'entrenament.
+# Es una declaracio, no un mecanisme: qui la fa complir son els grups Disallow
+# d'aqui sota i la regla de Cloudflare que hi ha al darrere.
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
 # --- Crawlers d'IA: entrenament bloquejat, citacio oberta ---
 # Motiu i llista canonica: ~/.claude/CLAUDE.md, seccio "Crawlers d'IA".
 # Dues regles si edites aixo: coincidencia EXACTA de nom (ClaudeBot i Claude-User
