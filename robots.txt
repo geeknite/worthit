@@ -44,3 +44,8 @@ Disallow: /
 
 User-agent: Bytespider
 Disallow: /
+
+# El sitemap es un fitxer estatic del repo (una sola URL: aquest site es una
+# sola pagina). No serveix per a descobrir res -- serveix per a poder-lo donar
+# d'alta a Search Console i veure si Google el llegeix.
+Sitemap: https://worthit.geeknite.com/sitemap.xml
