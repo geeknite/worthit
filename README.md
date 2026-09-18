@@ -18,8 +18,8 @@ A rational decision tool for gamers with large backlogs and limited time.
 - 📱 **Mobile-friendly** - Responsive design
 - 🎯 **Deterministic logic** - Same inputs = same output
 - 📊 **Score breakdown** - See exactly how the decision was made
-- 🔒 **Privacy-first** - No cookies, no tracking, no data collection
-- 💰 **Ad-ready** - Space for one unobtrusive ad placement
+- 🔒 **Privacy-first** - The tool stores nothing: no accounts, no database, no analytics. The ads are Google's and set their own cookies, which is what `privacy.html` is for
+- 💰 **Ad-ready** - Space for one unobtrusive ad placement, and no unit in it yet (see Advertisements)
 
 ---
 
@@ -176,17 +176,46 @@ game backlog, finish game, abandon game, gaming decision, backlog management, ga
 
 ---
 
-## Adding Advertisements
+## Advertisements
 
-The ad container is ready in `index.html`. To add Google AdSense:
+AdSense is already loaded, and **not the way this section used to describe**. It
+told you to paste a raw `<ins>` with your own `data-ad-client` into
+`.ad-placeholder`; doing that today would hardcode a second publisher id next to
+the one the shared loader already sets, and the `ca-pub-XXXXXXXXXX` placeholder
+made it look like this site had no publisher at all.
+
+What actually happens is one line in `index.html`:
 
 ```html
-<!-- In the .ad-placeholder div -->
+<link rel="preconnect" href="https://blog.geeknite.com" />
+<script async src="https://blog.geeknite.com/assets/js/gn-ads.js?v=1"></script>
+```
+
+`gn-ads.js` is shared by nine GeekNite sites. It reads the `gn_member` cookie
+that `blog.geeknite.com` sets after a Patreon login, scoped to `.geeknite.com`;
+an active patron gets no AdSense script at all (hiding units that have already
+loaded is against AdSense policy), and everyone else gets the loader with the
+publisher id baked in. So there is nothing per-site to configure, and nothing
+here to paste a client id into.
+
+**What is missing is the unit.** Measured 2026-09-18: `.ad-placeholder` contains
+a label and an HTML comment, and there is not one `<ins class="adsbygoogle">` in
+this repo — nor in `subs`, `heat-solo` or `Peloton-Tactics`. Loading
+`adsbygoogle.js` without a unit renders nothing unless Auto ads are switched on
+for the site in the AdSense console, which is an account-level setting and not
+visible from here. The placeholder is therefore a hole, and it is left looking
+like one on purpose rather than filled with a fake slot id.
+
+To close it, create a display unit for `worthit.geeknite.com` in the AdSense
+console and put its **numeric** slot id in:
+
+```html
+<!-- inside .ad-placeholder -->
 <ins
   class="adsbygoogle"
   style="display:block"
-  data-ad-client="ca-pub-XXXXXXXXXX"
-  data-ad-slot="XXXXXXXXXX"
+  data-ad-client="ca-pub-2992269112655291"
+  data-ad-slot="0000000000"
   data-ad-format="auto"
   data-full-width-responsive="true"
 ></ins>
@@ -195,27 +224,24 @@ The ad container is ready in `index.html`. To add Google AdSense:
 </script>
 ```
 
+`data-ad-slot` has to be the id the console gives you. `"auto"` is a *format*,
+not a slot: a unit with `data-ad-slot="auto"` can never be paid, which is
+exactly the state three of the Astro sites in this ecosystem were in.
+
 ---
 
-## Analytics Integration
+## Analytics
 
-The code includes a placeholder for Google Analytics. Add to `index.html`:
+**There is none, and adding some is not a one-line change.** This section used
+to say "the code includes a placeholder for Google Analytics" and then gave a
+`gtag` snippet to paste. There is no such placeholder: `index.html` loads no
+`googletagmanager.com` script and defines no `dataLayer`.
 
-```html
-<!-- Google Analytics -->
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-XXXXXXXXXX");
-</script>
-```
+That absence is a statement the site makes elsewhere. `privacy.html` lists the
+third-party cookies this site sets and the only ones on it are Google's
+advertising cookies; the tool's own answers never leave the browser. Adding
+Analytics means adding a cookie the privacy page says is not there, so it is an
+edit to two files and a claim to a visitor, not a snippet.
 
 ---
 
