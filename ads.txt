@@ -1,0 +1,5 @@
+# Authorized digital sellers for this host.
+# The root geeknite.com/ads.txt reaches a subdomain only through a SUBDOMAIN
+# declaration, so every ad-serving host in the network keeps its own copy:
+# correct under either reading, and one line per file.
+google.com, pub-2992269112655291, DIRECT, f08c47fec0942fa0
