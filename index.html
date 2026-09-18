@@ -176,8 +176,87 @@
         <!-- Footer -->
         <footer class="footer">
             <p>Made with <span class="heart">♥</span> for gamers with too many games</p>
-            <p class="footer-note">No tracking • No accounts • Just logic</p>
-            <p class="copyright">© 2026 worthit.geeknite.com</p>
+            <!-- This line used to read "No tracking - No accounts - Just logic". The
+                 first third stopped being true the day the site started serving
+                 AdSense: the tool itself still stores nothing, but Google's ads set
+                 their own cookies, and privacy.html has said so all along. -->
+            <p class="footer-note">Your answers stay in your browser &bull; No account needed &bull; Advertising pays for the hosting</p>
+
+            <div class="footer-top">
+                <div>
+                    <!-- The tool carries no affiliate links of its own -- privacy.html
+                         says so in those words -- so this names who actually pays. -->
+                    <p>Free, in your browser. Advertising pays for the hosting; this site carries no affiliate links of its own.</p>
+                    <p class="footer-legal">
+                        <a href="/privacy.html">Privacy policy</a>
+                        <a href="/legal.html">Legal notice</a>
+                    </p>
+                </div>
+                <div>
+                    <h2 class="footer-heading">Support GeekNite</h2>
+                    <p>Patrons browse every GeekNite site ad-free, this one included: one membership covers them all.</p>
+                    <p>
+                        <!-- return_to brings the reader back here. The blog's safeReturnTo()
+                             accepts any *.geeknite.com origin (measured live 2026-09-18).
+                             The URL is fixed because the site is a single page. -->
+                        <a
+                            class="footer-cta"
+                            href="https://blog.geeknite.com/api/patreon/login?return_to=https%3A%2F%2Fworthit.geeknite.com%2F"
+                            rel="noopener"
+                        >Become a patron, or sign in &rarr;</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- The ten public siblings, grouped the way www does it
+                 (HTG/htg-next/components/MainLayout.js). Plain links and never
+                 rel="nofollow": measured 2026-09-16 over 481 days of Search Console,
+                 www is the only page on the domain Google has ever indexed, so a link
+                 from a sibling's footer is the whole crawl path they have.
+                 motivate.geeknite.com is missing on purpose: it is an app behind a
+                 login (`/` 302s to `/auth/login`), and a link would send reader and
+                 crawler to a form. Measured 2026-09-18. -->
+            <div class="footer-eco">
+                <h2 class="footer-heading">The rest of GeekNite</h2>
+                <div class="footer-groups">
+                    <div>
+                        <p class="footer-group">GeekNite</p>
+                        <ul>
+                            <li><a href="https://www.geeknite.com" hreflang="en" rel="noopener">GeekNite Search</a></li>
+                            <li><a href="https://blog.geeknite.com" hreflang="en" rel="noopener">GeekNite Blog</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="footer-group">Price Trackers</p>
+                        <ul>
+                            <li><a href="https://ebikes.geeknite.com" hreflang="en" rel="noopener">eBike MTB Comparison</a></li>
+                            <li><a href="https://ddr5.geeknite.com" hreflang="es" rel="noopener">DDR5 RAM Deals</a></li>
+                            <li><a href="https://trailrunning.geeknite.com" hreflang="en" rel="noopener">Trail Running Shoes</a></li>
+                            <li><a href="https://switch2digitalgames.geeknite.com" hreflang="en" rel="noopener">Switch 2 Game Prices</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="footer-group">Free Tools</p>
+                        <ul>
+                            <li><a href="https://subs.geeknite.com" hreflang="en" rel="noopener">Subscription Cost Calculator</a></li>
+                            <li><a href="https://menu.geeknite.com" hreflang="es" rel="noopener">Menu Semanal</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="footer-group">Games</p>
+                        <ul>
+                            <li><a href="https://peloton-tactics.geeknite.com" hreflang="en" rel="noopener">Peloton Tactics</a></li>
+                            <li><a href="https://heat-solo.geeknite.com" hreflang="ca" rel="noopener">HEAT Solo</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The year is written by the browser (app.js). A literal was the one
+                 fixed year in the house and would go stale on 1 January unnoticed.
+                 The host name stays in the markup: app.js's integrity check reads
+                 this element's textContent and looks for it. -->
+            <p class="copyright">&copy; <span id="footer-year"></span> worthit.geeknite.com</p>
             <p class="license">
                 <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">
                     <img src="https://licensebuttons.net/l/by-nc/4.0/80x15.png" alt="CC BY-NC 4.0" style="vertical-align: middle;">

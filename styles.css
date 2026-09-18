@@ -647,6 +647,82 @@ input[type="number"] {
     margin-top: 0.5rem;
 }
 
+/* The two blocks below read as prose, so they are left-aligned even though the
+   footer as a whole is centred. */
+.footer-top,
+.footer-eco {
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.footer-top {
+    display: grid;
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+.footer-heading {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer a {
+    color: var(--accent-secondary);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-cta {
+    font-weight: 600;
+}
+
+.footer-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .footer-groups {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.footer-group {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.footer-groups ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-groups li {
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+}
+
 /* Validation Styles */
 .input-group.error input {
     border-color: var(--abandon-color);

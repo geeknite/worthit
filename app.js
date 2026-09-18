@@ -441,6 +441,15 @@
             });
         });
 
+        // The footer's copyright year. Written here rather than into the HTML so it
+        // cannot become the one fixed year in the house -- a literal would go stale
+        // on 1 January with nobody looking at it. The host name stays in the markup,
+        // because the integrity check below reads it from the same element.
+        const yearEl = document.getElementById('footer-year');
+        if (yearEl) {
+            yearEl.textContent = String(new Date().getFullYear());
+        }
+
         // Integrity check
         (function() {
             const marker = document.querySelector('.copyright');
