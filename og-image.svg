@@ -1,0 +1,26 @@
+<!-- Source of og-image.png (1200x630), the social card this site's meta tags
+     point at. Edit here and re-rasterise; no social platform renders an SVG,
+     so the PNG next to it is what ships:
+
+       node -e "require('sharp')('og-image.svg').png().resize(1200,630).toFile('og-image.png')"
+
+     The palette is worthit's own (styles.css): the bg-primary #0a0e17, the
+     bg-card #1a2234, and the amber/red the verdict badges use. Fonts are the
+     plain system stack on purpose: librsvg resolves fonts through the OS and
+     silently falls back, and a social card is the one image nobody proofreads. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="100%" stop-color="#1a2234"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#f59e0b"/>
+  <text x="90" y="130" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" fill="#f59e0b" letter-spacing="6">GEEKNITE</text>
+  <text x="90" y="300" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="bold" fill="#ffffff">Is It Worth Finishing?</text>
+  <text x="90" y="400" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#8892a4">Finish, pause or drop that game, decided with your own numbers,</text>
+  <text x="90" y="444" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#8892a4">not with how much you already paid for it.</text>
+  <rect x="90" y="530" width="120" height="6" fill="#ef4444"/>
+  <text x="90" y="586" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#8892a4">worthit.geeknite.com</text>
+</svg>
