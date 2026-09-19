@@ -10,6 +10,9 @@
     <!-- AdSense loaded via shared cross-site gating script (skips ads for GeekNite patrons) -->
     <link rel="preconnect" href="https://blog.geeknite.com">
     <script async src="https://blog.geeknite.com/assets/js/gn-ads.js?v=1"></script>
+    <!-- GA4 via the same shared-script pattern: one measurement id and one
+         opt-out (?gn-analytics=off, a cookie on .geeknite.com) for every GeekNite site -->
+    <script async src="https://blog.geeknite.com/assets/js/gn-analytics.js?v=1"></script>
     <style>
         .legal-page { max-width: 780px; margin: 0 auto; padding: 48px 20px; line-height: 1.7; color: var(--text-secondary); }
         .legal-page h1 { color: var(--text-primary); font-size: 2rem; margin-bottom: 24px; }

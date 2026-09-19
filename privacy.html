@@ -10,6 +10,9 @@
     <!-- AdSense loaded via shared cross-site gating script (skips ads for GeekNite patrons) -->
     <link rel="preconnect" href="https://blog.geeknite.com">
     <script async src="https://blog.geeknite.com/assets/js/gn-ads.js?v=1"></script>
+    <!-- GA4 via the same shared-script pattern: one measurement id and one
+         opt-out (?gn-analytics=off, a cookie on .geeknite.com) for every GeekNite site -->
+    <script async src="https://blog.geeknite.com/assets/js/gn-analytics.js?v=1"></script>
     <style>
         .legal-page { max-width: 780px; margin: 0 auto; padding: 48px 20px; line-height: 1.7; color: var(--text-secondary); }
         .legal-page h1 { color: var(--text-primary); font-size: 2rem; margin-bottom: 8px; }
@@ -45,12 +48,15 @@
         <p>Third-party services used on this site do collect information of their own:</p>
         <ul>
             <li><strong>Google AdSense:</strong> serves the ads on this site and may use cookies to tailor advertising to your interests.</li>
+            <li><strong>Google Analytics 4:</strong> tells us which pages are read, from which country and on which kind of device, with IP anonymisation enabled. It does not tell us who you are. The same measurement id is used across the GeekNite sites, so a visit that continues on another one is a single visit rather than two strangers. Open any page with <code>?gn-analytics=off</code> to switch it off.</li>
             <li><strong>GitHub Pages:</strong> hosts the site and processes technical data (IP address, browser type) in its server logs.</li>
         </ul>
         <p>
             This is the honest reading of the "no tracking" line on the home page: <em>we</em> do not
             track you, and the tool itself stores nothing at all -- but the ads that pay for the site
-            are Google's, and they set the cookies listed below.
+            are Google's, and the audience measurement is Google's too, and they set the cookies
+            listed below. The measurement counts pages, countries and device types; it does not
+            follow you anywhere, and <code>?gn-analytics=off</code> turns it off for good.
         </p>
 
         <h2>Cookies used</h2>
@@ -60,6 +66,8 @@
             </thead>
             <tbody>
                 <tr><td><code>__gads</code>, <code>__gpi</code></td><td>Google AdSense</td><td>Personalised advertising</td><td>13 months</td></tr>
+                <tr><td><code>_ga</code>, <code>_ga_*</code></td><td>Google Analytics</td><td>Distinguishes one visitor from another so a visit is not counted twice</td><td>2 years</td></tr>
+                <tr><td><code>gn_no_analytics</code></td><td>geeknite.com</td><td>Records that you asked to be left out of the measurement with <code>?gn-analytics=off</code>, in which case the measurement is never started. Set on <code>.geeknite.com</code>, so one opt-out covers every GeekNite site.</td><td>2 years</td></tr>
                 <tr><td><code>gn_member</code></td><td>geeknite.com</td><td>Set on <code>.geeknite.com</code> when you sign in as a GeekNite patron; read here only to turn the ads off. It carries no name, no email and no payment data.</td><td>30 days</td></tr>
             </tbody>
         </table>
@@ -67,8 +75,11 @@
 
         <h2>Legal basis</h2>
         <p>
-            Advertising cookies rely on your <strong>consent</strong> (Art. 6.1.a GDPR).
-            You may withdraw it at any time by reloading the page and rejecting cookies.
+            Advertising and analytics cookies rely on your <strong>consent</strong> (Art. 6.1.a GDPR).
+            You may withdraw it at any time by reloading the page and rejecting cookies. For the
+            analytics the withdrawal is <code>?gn-analytics=off</code> on any page, which stops the
+            measurement itself rather than only the cookie, on every GeekNite site at once;
+            <code>?gn-analytics=on</code> undoes it.
         </p>
 
         <h2>Your rights</h2>
