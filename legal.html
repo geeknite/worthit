@@ -10,6 +10,10 @@
     <!-- AdSense loaded via shared cross-site gating script (skips ads for GeekNite patrons) -->
     <link rel="preconnect" href="https://blog.geeknite.com">
     <script async src="https://blog.geeknite.com/assets/js/gn-ads.js?v=1"></script>
+    <!-- Anti-adblock wall, right beside the ads it defends so it inherits
+         this page's ad exemptions exactly. Bump the ?v= here whenever the
+         siblings' is bumped (grep the ecosystem for gn-paywall.js?v=). -->
+    <script async src="https://blog.geeknite.com/assets/js/gn-paywall.js?v=1"></script>
     <!-- GA4 via the same shared-script pattern: one measurement id and one
          opt-out (?gn-analytics=off, a cookie on .geeknite.com) for every GeekNite site -->
     <script async src="https://blog.geeknite.com/assets/js/gn-analytics.js?v=1"></script>
