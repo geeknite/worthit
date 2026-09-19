@@ -1,0 +1,42 @@
+# Pushes this site's URL list to IndexNow (Bing, Yandex, Seznam, Naver).
+#
+# Why it exists: this site has no channel of its own. Nothing here tells a
+# search engine that a page exists -- everything waits for a crawler, and the
+# only path in is the sibling footer.
+#
+# Why weekly rather than daily: the sitemap lists 3 fixed pages that move only
+# when somebody edits the HTML. Re-announcing the same 3 URLs every morning is
+# noise rather than a channel, and the quota is counted per URL.
+#
+# Why not on push: GitHub Pages deploys the push itself and takes a moment over it, so a
+# submission fired by the push would announce the copy the deploy is still
+# replacing. Run `workflow_dispatch` by hand after a content
+# change that should not wait for Monday.
+#
+# No install and no build: this repo is plain HTML, the sitemap is
+# committed and the key is committed beside it. The key is public on purpose -- IndexNow authenticates by
+# fetching it from the site root, so there is no secret to configure and nothing
+# to rotate when somebody forks the repo.
+name: indexnow
+
+on:
+  schedule:
+    # Monday. Not on the hour: GitHub queues every cron on the platform at once.
+    - cron: "29 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Submit the sitemap to IndexNow
+        run: node scripts/notify-indexnow.js
