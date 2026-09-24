@@ -1,0 +1,29 @@
+# Is It Worth Finishing?
+
+> Decision tool for a game backlog: given the hours left, how much you are
+> enjoying it and what else is waiting, it tells you whether to finish a game
+> or drop it. Logic, not opinions.
+
+Runs entirely in the browser. No account, and nothing you type is uploaded.
+
+## Pages
+
+- [Home and tool](https://worthit.geeknite.com/)
+- [Privacy](https://worthit.geeknite.com/privacy.html)
+- [Legal notice](https://worthit.geeknite.com/legal.html)
+
+## Full index
+
+- [Sitemap](https://worthit.geeknite.com/sitemap.xml)
+
+## Usage policy
+
+- Indexing: allowed.
+- Answer-time citation: allowed and welcome. Please link back to the page used.
+- Training or corpus collection: not allowed.
+
+This repeats the `Content-Signal: search=yes, ai-input=yes, ai-train=no` line in
+https://worthit.geeknite.com/robots.txt, which is where the policy is enforced.
+
+The verdict is computed from what the reader enters. It is not a review of any
+game and carries no score for one.
