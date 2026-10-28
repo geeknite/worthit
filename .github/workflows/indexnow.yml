@@ -20,9 +20,10 @@
 name: indexnow
 
 on:
-  schedule:
-    # Monday. Not on the hour: GitHub queues every cron on the platform at once.
-    - cron: "29 7 * * 1"
+  # No schedule since 2026-10-28: the daily/weekly IndexNow push runs from the
+  # PC (~/bin/indexnow-all.mjs on Ferran's machine, task GeekNite-IndexNow), which
+  # diffs the LIVE sitemap and sends only new or changed URLs, instead of a
+  # full install+build here every day. Kept for a manual one-off resubmit.
   workflow_dispatch:
 
 permissions:
