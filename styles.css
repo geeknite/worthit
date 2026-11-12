@@ -736,6 +736,10 @@ input[type="number"] {
     font-size: 0.8rem;
 }
 
+.footer-eco-follow {
+    margin-top: 0.5rem;
+}
+
 /* Validation Styles */
 .input-group.error input {
     border-color: var(--abandon-color);
